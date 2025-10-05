@@ -1,0 +1,19 @@
+services:
+
+  onlyoffice:
+    image: lscr.io/linuxserver/onlyoffice:latest
+    container_name: onlyoffice
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - CUSTOM_USER=admin
+      - PASSWORD=p4ssw0rd
+      - TZ=Europe/Madrid
+      - LC_ALL=es_ES.UTF-8  
+    volumes:
+      - ./config:/config
+    ports:
+      - "8200:3000"
+      - "8300:3001"
+    shm_size: "1gb"
+    restart: unless-stopped
